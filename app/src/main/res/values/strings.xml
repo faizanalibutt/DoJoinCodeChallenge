@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DoJoinCodeTest</string>
+    <string name="text_people">How people may reach you?</string>
+    <string name="text_person">In-Persion</string>
+    <string name="text_online">Online (coming soon)</string>
+    <string name="text_service">Your services are presented locally. People will either come to your store or meet you in their own places</string>
+    <string name="text_book">Book a time</string>
+    <string name="text_drop">Drop in</string>
+    <string name="text_register">No need for pre-registration, people can stop by your business at any of the available times.</string>
+    <string name="text_schedule">Set a work schedule and people will need to book any of the available time slots to meet you.</string>
+    <string name="text_next">Next</string>
+    <string name="text_back">Back</string>
+    <string name="text_category"><![CDATA[Select your service category & profession]]></string>
+    <string name="retry">Retry</string>
+</resources>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.DetailActivity">
+
+    <data>
+
+        <variable
+            name="detailModel"
+            type="com.test.dojoincodetest.ui.viewmodel.DetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center|start"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                android:text="@string/text_people"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/view1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView1">
+
+                <RadioButton
+                    android:id="@+id/person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> detailModel.selectInPerson()}"
+                    android:text="@string/text_person" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:enabled="false"
+                    android:text="@string/text_online" />
+
+            </RadioGroup>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:background="#40000000"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:layout_constraintBottom_toTopOf="@+id/appointmentView"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/appointmentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="16dp"
+                android:visibility="@{detailModel.showAppointmentView}"
+                app:layout_constraintTop_toBottomOf="@+id/view1">
+
+                <TextView
+                    android:id="@+id/service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="32dp"
+                    android:text="@string/text_service"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/textView2"/>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center|start"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="8dp"
+                    android:text="@string/text_people"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@+id/service"
+                    app:layout_constraintBottom_toTopOf="@+id/radioGroup2" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/view2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> detailModel.bookMe()}"
+                        android:text="@string/text_book" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:onClick="@{() -> detailModel.dropMe()}"
+                        android:text="@string/text_drop" />
+
+                </RadioGroup>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="#40000000"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/serviceView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:mutableVisibility="@{detailModel.showService}"
+                    app:layout_constraintTop_toBottomOf="@+id/view2">
+
+                    <TextView
+                        android:id="@+id/register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="32dp"
+                        android:textSize="14sp"
+                        app:serviceType="@{detailModel.showServiceType}"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/next_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/background_next_btn"
+                        android:paddingHorizontal="65dp"
+                        android:text="@string/text_next"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:onClick="@{() -> detailModel.nextPage()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/register" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@string/text_back"
+                        android:textSize="16sp"
+                        android:onClick="@{() -> detailModel.backToMain()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/next_btn" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
